@@ -1,8 +1,9 @@
 jobs:
   # track deployments on the environment
-- deployment: DeployWeb
-  displayName: deploy Web App
+- deployment: DeploySimpleapp
+  displayName: deploy Simple App
   pool:
     vmImage: 'Azure Pipelines'
   # creates an environment if it doesn't exist
+  environment: 'simple-dev'
   
