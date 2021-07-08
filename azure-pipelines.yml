@@ -5,8 +5,6 @@ jobs:
     vmImage: 'windows-latest'
   strategy:
     matrix:
-      Python27:
-        python.version: '2.7'
       Python36:
         python.version: '3.6'
 
@@ -24,24 +22,6 @@ jobs:
 
   - script: |
       call activate myEnvironment
-      pip install pytest pytest-azurepipelines
-      pytest
-    displayName: pytest
-
-- job:
-  displayName: From environment.yml
-  pool:
-    vmImage: 'windows-latest'
-
-  steps:
-  - bash: echo "##vso[task.prependpath]$CONDA/bin"
-    displayName: Add conda to PATH
-
-  - script: conda env create --quiet --file environment.yml
-    displayName: Create Anaconda environment
-
-  - bash: |
-      source activate env-from-yaml
       pip install pytest pytest-azurepipelines
       pytest
     displayName: pytest
