@@ -1,0 +1,8 @@
+jobs:
+  # track deployments on the environment
+- deployment: DeployWeb
+  displayName: deploy Web App
+  pool:
+    vmImage: 'Azure Pipelines'
+  # creates an environment if it doesn't exist
+  
