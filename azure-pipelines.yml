@@ -1,33 +1,5 @@
 jobs:
 - job:
-  displayName: ubuntu-16.04
-  pool:
-    vmImage: 'ubuntu-16.04'
-  strategy:
-    matrix:
-      Python27:
-        python.version: '2.7'
-      Python36:
-        python.version: '3.6'
-
-  steps:
-  - bash: echo "##vso[task.prependpath]$CONDA/bin"
-    displayName: Add conda to PATH
-
-  - bash: conda create --yes --quiet --name myEnvironment
-    displayName: Create Anaconda environment
-
-  - bash: |
-      source activate myEnvironment
-      conda install --yes --quiet --name myEnvironment python=$PYTHON_VERSION numpy
-    displayName: Install Anaconda packages
-
-  - bash: |
-      source activate myEnvironment
-      pip install pytest pytest-azurepipelines
-      pytest
-    displayName: pytest
-- job:
   displayName: vs2017-win2016
   pool:
     vmImage: 'vs2017-win2016'
